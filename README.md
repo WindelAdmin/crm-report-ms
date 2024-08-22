@@ -1,4 +1,4 @@
-# Relatório Microserviço
+# Microserviço de Geração de Relatórios
 
 Este projeto é um microserviço desenvolvido em Node.js utilizando Express, Prisma e JsReport, responsável por gerar relatórios em formato PDF. Ele faz parte de uma arquitetura maior e utiliza autenticação baseada em chave de API.
 
