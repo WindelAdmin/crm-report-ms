@@ -7,7 +7,7 @@ Este projeto é um microserviço desenvolvido em Node.js utilizando Express, Pri
 ```Bash
 assets/
 │
-└── nomeDoRelatorio
+├── nomeDoRelatorio
 │   ├── header.hbs                           # Arquivo hbs header e footer do relatório 
 │   ├── helper.js                            # Arquivo JS dos helpers específicos do relatório
 │   └── template.hbs                         # Arquivo hbs do corpo do relatório
