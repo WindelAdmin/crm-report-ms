@@ -1,23 +1,22 @@
 import prisma from '../../../infra/database/prisma.service'
-import { IJsReportReport } from '../../../infra/jsreport/jsreport.report.interface'
-import { JsreportService } from '../../../infra/jsreport/jsreport.service'
+import { IJsReportReport } from '../../../infra/report/jsreport/jsreport.report.interface'
+import { JsreportService } from '../../../infra/report/jsreport/jsreport.service'
+import { registerStrategy } from '../../../infra/report/report.factory'
 import { ReportStrategy } from '../../report-strategies/report.abstract.strategy'
-
-import { IReport } from '../../report.interface'
 import { ITesteDataset } from './teste.dataset.interface'
+import { ITesteReport } from './teste.report.interface'
 
 export class TesteStrategy implements ReportStrategy {
-  constructor() {}
-
-  async generate(report: IReport): Promise<Buffer> {
+  constructor() {
+    registerStrategy('testeStrategy')
+  }
+  async generate(report: ITesteReport): Promise<Buffer> {
     const jsReport = new JsreportService()
-
     const prismaData = await prisma.atividade.findMany()
-
-    const reportInfo: IJsReportReport<ITesteDataset> = {
+    const reportDataset: IJsReportReport<ITesteDataset> = {
       reportName: report.reportName,
       dataset: { ...prismaData }
     }
-    return await jsReport.generate(reportInfo)
+    return await jsReport.generate(reportDataset)
   }
 }

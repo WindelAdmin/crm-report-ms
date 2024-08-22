@@ -1,15 +1,22 @@
 import { Router } from 'express'
 import apiKeyAuthGuard from '../infra/auth/apiKeyAuthGuard'
-import { reportStrategies } from './report.strategies'
+import ReportService from '../infra/report/report.service'
+import { IReportService } from '../infra/report/report.service.interface'
 
 const router = Router()
 
-router.get('/report', apiKeyAuthGuard, async (req, res) => {
-  const reportName = req.body.reportName
-  const filters = req.body.filters
-
+router.get('/report', apiKeyAuthGuard, async (req, res, next) => {
+  const reportInfo: IReportService = {
+    filters: req.body.filters,
+    reportName: req.body.reportName,
+    user: {
+      email: req.body.user.email,
+      name: req.body.user.name
+    }
+  }
   try {
-    const buffer: Buffer = await reportStrategies({ reportName, filters })
+    const reportService = new ReportService()
+    const buffer = await reportService.generateReport(reportInfo)
 
     res.set({
       'Content-Type': 'application/pdf',
@@ -18,8 +25,7 @@ router.get('/report', apiKeyAuthGuard, async (req, res) => {
     })
     res.end(buffer)
   } catch (error) {
-    console.log(error)
-    res.status(400).json({ message: error })
+    next(error)
   }
 })
 

@@ -24,7 +24,7 @@ export class JsreportService {
   }
 
   async generate(report: IJsReportReport<any>): Promise<Buffer> {
-    const templatePath = join(__dirname, '../../../', 'assets', report.reportName)
+    const templatePath = join(__dirname, '../../../../', 'assets', report.reportName)
     const reportFiles = {
       template: readFileSync(templatePath + `/template.hbs`, 'utf8'),
       header: readFileSync(templatePath + `/header.hbs`, 'utf8'),

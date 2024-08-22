@@ -1,6 +1,4 @@
-import { reportNameEnum } from './report.name.enum'
-
-export interface IReport {
-  reportName: reportNameEnum
-  filters: any
+export interface IReport<T> {
+  reportName: string
+  filters: T
 }

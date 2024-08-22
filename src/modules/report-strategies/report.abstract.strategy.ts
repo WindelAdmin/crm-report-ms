@@ -1,6 +1,6 @@
-import { IReport } from '../report.interface'
+import { IReportService } from '../../infra/report/report.service.interface'
 
 export abstract class ReportStrategy {
   constructor() {}
-  abstract generate(report: IReport): Promise<Buffer>
+  abstract generate(report: IReportService): Promise<Buffer>
 }
