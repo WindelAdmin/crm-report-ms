@@ -9,23 +9,23 @@ src/
 │
 ├── infra/
 │   ├── auth/
-│   │   └── apiKeyAuthGuard.ts       # Middleware para autenticação por chave de API
+│   │   └── apiKeyAuthGuard.ts               # Middleware para autenticação por chave de API
 │   ├── report/
-│   │   ├── report.service.ts        # Serviço para geração de relatórios
-│   │   ├── report.service.interface.ts # Interface para o serviço de relatório
-│   │   └── jsreport/                # Módulo para integração com o Jsreport
+│   │   ├── report.service.ts                # Serviço para geração de relatórios
+│   │   ├── report.service.interface.ts      # Interface para o serviço de relatório
+│   │   └── jsreport/                        # Módulo para integração com o Jsreport
 │   └── database/
-│       └── prisma.service.ts        # Configuração do Prisma
+│       └── prisma.service.ts                # Configuração do Prisma
 │
 ├── modules/
 │   └── reports/
-│       └── nomeDoRelatorio/         # Diretório para estratégias específicas de relatórios
+│       └── nomeDoRelatorio/                 # Diretório para estratégias específicas de relatórios
 │           ├── teste.dataset.interface.ts   # Interface do dataset para o relatório específico
 │           ├── teste.report.interface.ts    # Interface do relatório específico
 │           └── teste.strategy.ts            # Implementação da estratégia de relatório
 │
 └── app/
-    └── router.ts                   # Definição das rotas da aplicação
+    └── router.ts                            # Definição das rotas da aplicação
 ```
 
 ## Instalação
