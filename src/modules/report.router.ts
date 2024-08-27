@@ -5,7 +5,7 @@ import { IReportService } from '../infra/report/report.service.interface'
 
 const router = Router()
 
-router.get('/report', apiKeyAuthGuard, async (req, res, next) => {
+router.post('/report', apiKeyAuthGuard, async (req, res, next) => {
   const reportInfo: IReportService = {
     filters: req.body.filters,
     reportName: req.body.reportName,
@@ -23,7 +23,7 @@ router.get('/report', apiKeyAuthGuard, async (req, res, next) => {
       'Content-Disposition': 'inline; filename=relatorio.pdf',
       'Content-Length': buffer.length
     })
-    res.end(buffer)
+    res.send(buffer)
   } catch (error) {
     next(error)
   }
